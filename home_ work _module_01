@@ -1,0 +1,15 @@
+const lineTop = "qwertyuiop[]";
+const lineMiddle = "asdfghjkl;'\\";
+const lineBottom = "zxcvbnm,./";
+const lengthLineTop = lineTop.length;
+const lengthLineMiddle = lineMiddle.length;
+const lengthLineBottom = lineBottom.length;
+const charLineTopStart =lineTop.charAt(0);
+const charLineTopEnd =lineTop.charAt(lengthLineTop - 1);
+const charLineMiddleStart =lineMiddle.charAt(0);
+const charLineMiddleEnd =lineMiddle.charAt(lengthLineMiddle - 1);
+const charLineBottomStart =lineBottom.charAt(0);
+const charLineBottomEnd =lineBottom.charAt(lengthLineBottom - 1);
+const indexLineTopOne = lineTop.indexOf("[") + 1;
+const indexLineTopTwo = lineTop.indexOf("]") + 1;
+console.log(`lineTop: ${lineTop}, lineMiddle: ${lineMiddle}, lineBottom: ${lineBottom}, lengthLineTop: ${lengthLineTop}, lengthLineMiddle: ${lengthLineMiddle}, lengthLineBottom: ${lengthLineBottom}, charLineTopStart: ${charLineTopStart}, charLineTopEnd: ${charLineTopEnd}, charLineMiddleStart: ${charLineMiddleStart}, charLineMiddleEnd: ${charLineMiddleEnd}, charLineBottomStart: ${charLineBottomStart}, charLineBottomEnd: ${charLineBottomEnd}, indexLineTopOne: ${indexLineTopOne}, indexLineTopTwo: ${indexLineTopTwo}`);
