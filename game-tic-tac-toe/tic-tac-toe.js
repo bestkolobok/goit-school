@@ -45,7 +45,6 @@ function onClick(event) {
 }
 root.addEventListener("click", onClick);
 
-
 function setStatus() {
     for (let i = 0; i < 9; i++) {
         if (gameStatus['cell' + i] === true) {
