@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>About Us</title>
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <style>
+        #root {
+            width: 500px;
+            height: 500px;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            margin: auto;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-flow: wrap;
+            flex-flow: wrap;
+        }
+        
+        #root::after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+        
+        #root .box {
+            -webkit-transition: 0.3s;
+            transition: 0.3s;
+            cursor: crosshair;
+            position: relative;
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background-color: #d8d8d8;
+            float: left;
+            margin: 20px;
+            text-align: center;
+            /* display: table; */
+        }
+        
+        #root .box:hover:not(.player-x):not(.player-o) {
+            background-color: #8d8d8d;
+        }
+        
+        #root .box b {
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+            font-size: 60px;
+            display: table;
+            width: 100%;
+            color: #fff;
+        }
+        
+        #text {
+            width: 0px;
+            height: 0px;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            margin: auto;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-flow: wrap;
+            flex-flow: wrap;
+        }
+        
+        #text b {
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+            font-size: 60px;
+            height: 100%;
+            width: 100%;
+            color: rgb(175, 0, 9);
+        }
+    </style>
+</head>
+
+<body>
+    <script src="tic-tac-toe.js"></script>
+</body>
+
+</html>
