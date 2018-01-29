@@ -1,8 +1,5 @@
 /////////////////  HTML  /////////////////
 const body = document.querySelector("body");
-const root = document.querySelector("#root");
-const text = document.querySelector("#text");
-text.hidden = true;
 
 function createRoot() {
     let boxString = '';
@@ -10,9 +7,13 @@ function createRoot() {
         boxString = boxString + '<div id="cell' + i + '" class="box"><b></b></div>'
     }
     const root = '<div id="root">' + boxString + '</div><div id="text"><b></b></div>'
-    return root
+    return root;
 }
 body.innerHTML = createRoot()
+
+const text = document.querySelector("#text");
+const root = document.querySelector("#root");
+text.hidden = true;
 
 /////////////////  LOGIC  /////////////////
 const WIN_COMBINATIONS = [
@@ -44,6 +45,7 @@ function onClick(event) {
 }
 root.addEventListener("click", onClick);
 
+
 function setStatus() {
     for (let i = 0; i < 9; i++) {
         if (gameStatus['cell' + i] === true) {
@@ -57,8 +59,8 @@ function setStatus() {
     }
 }
 
-function tryToWin() {
-    let x = 1;
+function tryToWin(x, y) {
+    //let x = 1;
     let stop = true;
     let counter = 0;
     let tryWinString;
@@ -90,14 +92,14 @@ function tryToWin() {
         }
     }
     while (stop === true && counter < 30) {
-        winSrtingRand = Math.floor(Math.random() * (x + 1));
-        tryWinString = WIN_COMBINATIONS[winSrtingRand];
+        winSrtingRand = Math.floor(Math.random() * ((y - x) + 1));
+        tryWinString = WIN_COMBINATIONS[winSrtingRand + x];
         searchInString()
         counter += 1;
-        if (counter > 6 && x === 1) {
+        if (counter > 6 && x < 2) {
             x = 3;
         }
-        if (counter > 12 && x === 3) {
+        if (counter > 12 && x < 4) {
             x = 7;
         }
     }
@@ -169,11 +171,28 @@ function win() {
     return search
 }
 
+function checkOcasion() {
+    let search = true;
+    const strOne = WIN_COMBINATIONS[0]
+    const strTwo = WIN_COMBINATIONS[1]
+    if (
+        gameStatus['cell4'] === false &&
+        ((gameStatus['cell' + strOne[0]] === true && gameStatus['cell' + strOne[1]] === false && gameStatus['cell' + strOne[2]] === true) ||
+            (gameStatus['cell' + strTwo[0]] === true && gameStatus['cell' + strTwo[1]] === false && gameStatus['cell' + strTwo[2]] === true))
+    ) {
+        tryToWin(2, 3)
+        search = false;
+    }
+    return search
+}
+
 function startGame() {
     if (searchPreWin(false) === true) {
         if (searchPreWin(true) === true) {
-            if (gameStatus['cell4'] === null) { gameStatus['cell4'] = false } else {
-                tryToWin()
+            if (checkOcasion() === true) {
+                if (gameStatus['cell4'] === null) { gameStatus['cell4'] = false } else {
+                    tryToWin(0, 1)
+                }
             }
         }
     }
