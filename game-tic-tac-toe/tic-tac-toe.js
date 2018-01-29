@@ -82,7 +82,6 @@ function tryToWin() {
                 if (gameStatusCheck(winCellRand) === null) {
                     const check = tryWinString[winCellRand];
                     gameStatus['cell' + check] = false;
-                    console.log(gameStatus)
                     stopTwo = false;
                     stop = false;
                 }
@@ -167,7 +166,6 @@ function win() {
         text.hidden = false;
         text.style = "width: 500px";
     }
-    console.log(count)
     return search
 }
 
