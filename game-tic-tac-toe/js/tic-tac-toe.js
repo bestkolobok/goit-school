@@ -9,7 +9,7 @@ function createRoot() {
     const root = '<div id="root">' + boxString + '</div><div id="text"><b></b></div>'
     return root;
 }
-body.innerHTML = createRoot()
+body.innerHTML = createRoot();
 
 const text = document.querySelector("#text");
 const root = document.querySelector("#root");
@@ -26,21 +26,21 @@ const WIN_COMBINATIONS = [
     ["0", "3", "6"],
     ["2", "5", "8"]
 ];
-let gameStatus = {}
+let gameStatus = {};
 let winSrtingRand = 0;
 
 for (let i = 0; i < 9; i++) {
-    gameStatus['cell' + i] = null
+    gameStatus['cell' + i] = null;
 }
 
 function onClick(event) {
     if (event.target !== event.currentTarget && event.target.classList.contains("box") && win()) {
         gameStatus[event.target.id] = true;
         if (win()) {
-            startGame()
-            win()
+            startGame();
+            win();
         }
-        setStatus()
+        setStatus();
     }
 }
 root.addEventListener("click", onClick);
@@ -59,14 +59,14 @@ function setStatus() {
 }
 
 function tryToWin(x, y) {
-    //let x = 1;
     let stop = true;
     let counter = 0;
     let tryWinString;
+    let flag = true;
 
     function gameStatusCheck(n) {
-        const check = tryWinString[n]
-        return gameStatus['cell' + check]
+        const check = tryWinString[n];
+        return gameStatus['cell' + check];
     }
 
     function searchInString() {
@@ -74,11 +74,12 @@ function tryToWin(x, y) {
             gameStatusCheck(1) !== true &&
             gameStatusCheck(2) !== true &&
             searchPreWin(true) === true ||
-            counter === 0
+            counter === 0 ||
+            flag === false
         ) {
             let stopTwo = true;
             let counterTwo = 0;
-            while (stopTwo === true && counterTwo < 10) {
+            while (stopTwo === true && counterTwo < 16) {
                 const winCellRand = Math.floor(Math.random() * 3);
                 if (gameStatusCheck(winCellRand) === null) {
                     const check = tryWinString[winCellRand];
@@ -90,17 +91,20 @@ function tryToWin(x, y) {
             }
         }
     }
-    while (stop === true && counter < 30) {
+    while (stop === true && counter < 40) {
         winSrtingRand = Math.floor(Math.random() * ((y - x) + 1));
         tryWinString = WIN_COMBINATIONS[winSrtingRand + x];
-        searchInString()
-        counter += 1;
+        searchInString();
         if (counter > 6 && x < 2) {
-            x = 3;
+            y = 3;
         }
         if (counter > 12 && x < 4) {
-            x = 7;
+            y = 7;
         }
+        if (counter > 28) {
+            flag = false;
+        }
+        counter += 1;
     }
 }
 
@@ -124,7 +128,7 @@ function searchPreWin(condition) {
             break;
         }
     }
-    return search
+    return search;
 }
 
 function win() {
@@ -151,7 +155,7 @@ function win() {
             text.firstChild.innerHTML = "YOU LOOSER!!!";
             search = false;
         } else {
-            noWinners(n)
+            noWinners(n);
         }
     }
     if (count > 6) {
@@ -159,7 +163,7 @@ function win() {
         search = false;
         for (const n of root.children) {
             if (n.classList.contains("player-x") === false) {
-                n.classList.add("player-x")
+                n.classList.add("player-x");
             }
         }
     }
@@ -167,13 +171,13 @@ function win() {
         text.hidden = false;
         text.style = "width: 500px";
     }
-    return search
+    return search;
 }
 
 function checkOcasion() {
     let search = true;
-    const strOne = WIN_COMBINATIONS[0]
-    const strTwo = WIN_COMBINATIONS[1]
+    const strOne = WIN_COMBINATIONS[0];
+    const strTwo = WIN_COMBINATIONS[1];
     if (
         gameStatus['cell4'] === false &&
         ((gameStatus['cell' + strOne[0]] === true && gameStatus['cell' + strOne[1]] === false && gameStatus['cell' + strOne[2]] === true) ||
@@ -182,7 +186,7 @@ function checkOcasion() {
         tryToWin(2, 3)
         search = false;
     }
-    return search
+    return search;
 }
 
 function startGame() {
