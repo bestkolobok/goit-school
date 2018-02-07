@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>About Us</title>
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+    <script type="tpl/lodash" id="menu">
+        <h1>You pressed: <span class="pressed"></span></h1>
+        <div class="keyboard">
+            <% en.forEach(row => { %>
+                <div class="keyboard__row">
+                    <% row.forEach(item => { %>
+                        <button class="keyboard__btn"><%- item %></button>
+                        <% }); %>
+                </div>
+                <% }); %>
+        </div>
+        <div class="keyboard__row">
+            <button class="keyboard__btn keyboard__btn--space">space</button>
+        </div>
+    </script>
+
+    <div id="output"></div>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.4/lodash.min.js"></script>
+    <script src="js/test.js"></script>
+
+</body>
+
+</html>
