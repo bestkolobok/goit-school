@@ -34,7 +34,7 @@ function onClick(event) {
     if (event.target.classList.contains("keyboard__btn")) {
         event.target.classList.add("keyboard__btn--active");
         activeBtn.node = event.target
+        pressed.textContent = event.target.textContent
     }
-    pressed.textContent = event.target.textContent
 }
 output.addEventListener("click", onClick);
