@@ -28,13 +28,11 @@ const activeBtn = {
 };
 
 function onClick(event) {
-    if (activeBtn.node !== null) {
-        activeBtn.node.classList.remove("keyboard__btn--active")
-    }
     if (event.target.classList.contains("keyboard__btn")) {
         event.target.classList.add("keyboard__btn--active");
-        activeBtn.node = event.target
-        pressed.textContent = event.target.textContent
+        setTimeout(() => event.target.classList.remove('keyboard__btn--active'), 300);
+        activeBtn.node = event.target;
+        pressed.textContent = event.target.textContent;
     }
 }
 output.addEventListener("click", onClick);
