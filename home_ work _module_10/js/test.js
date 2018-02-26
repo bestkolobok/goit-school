@@ -59,7 +59,7 @@ function countKPS(event) {
         if (keyboard.textContent.length === string.length) {
             timer.id = false;
             result.currentResult = string.length / timer.count;
-            exerciseOutput.textContent = `Скорость нажатия: ${result.currentResult.toFixed(4)} клавишь в секунду!`
+            exerciseOutput.textContent = `Скорость нажатия: ${result.currentResult.toFixed(4)} клавишь в секунду! `
             if (result.currentResult > result.bestResult) {
                 result.bestResult = result.currentResult;
                 localStorage.setItem('bestResult', JSON.stringify(result));
