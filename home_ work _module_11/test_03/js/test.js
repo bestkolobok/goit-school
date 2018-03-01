@@ -26,7 +26,7 @@ function get(event) {
     event.preventDefault();
     let name = '<p>Name</p>';
     let score = '<p>Score</p>';
-    fetch("http://fecore.net.ua/rest/", { method: 'GET' })
+    fetch("https://fecore.net.ua/rest/", { method: 'GET' })
         .then(response => {
             if (response.ok) return response.json();
             throw new Error("Error fetching data");
