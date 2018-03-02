@@ -19,7 +19,7 @@ const result = document.querySelector(".result");
 getBtn.addEventListener("click", onclick);
 
 function onclick(e) {
-    event.preventDefault();
+    e.preventDefault();
     // result.innerHTML = "";
     if (event.target.id === 'js-get_all') getAllUsers();
     if (event.target.id === 'js-get') {
