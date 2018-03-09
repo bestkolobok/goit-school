@@ -9,12 +9,13 @@
 const gulp = require('gulp');
 
 gulp.task('TS', () => {
-    gulp.crs('A/**/*.ts')
+    return gulp
+        .crs('A/**/*.ts')
         .pipe(gulp.dest('B'))
 })
 
 gulp.task('watch:ts', () => {
-    gulp.watch('A/**/*.ts', ['TS'])
+    return gulp.watch('A/**/*.ts', ['TS'])
 })
 
 
