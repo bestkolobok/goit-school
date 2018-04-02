@@ -19,7 +19,8 @@ Timer.prototype.startTimer = function() {
 Timer.prototype.stopTimer = function() {
     this.stopTime = Date.now();
     this.interval = this.stopTime - this.startTime;
-    console.log(this.interval / 1000)
+    const int = Math.floor(this.interval / 1000);
+    console.log(int);
 }
 
 let currentInterval = new Timer();
